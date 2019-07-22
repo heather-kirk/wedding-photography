@@ -1,0 +1,35 @@
+<h1> Don't see your photographer? Add them here! </h1>
+
+<%= form_for(@photographer) do |f| %>
+    <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+    </div>
+
+    <div>
+    <%= f.label :style %>
+    <%= f.text_field :style %>
+    </div>
+
+    <div>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    </div> 
+    
+    <p> Where is the the photographer located? </p>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+
+    <p> Don't see them here? Feel free to add them below! </p> 
+    <%= f.fields_for :location do |l| %>
+        <%= l.label :city %>
+        <%= l.text_field :city %>
+
+        <%= l.label :state %>
+        <%= l.text_field :state %>
+
+        <%= l.label :zipcode %>
+        <%= l.text_field :zipcode %>
+        <% end %>
+
+    <%= f.submit "Add Photographer" %>
+    <% end %>
