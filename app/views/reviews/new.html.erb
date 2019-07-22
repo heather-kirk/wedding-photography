@@ -1,0 +1,21 @@
+<h1> Add a Review for <%= @review.photographer.name%> - <%=@review.location.city %> </h1>
+<%= form_for(@review) do |f| %>
+    <div>
+    <%= f.label :stars %>
+    <%= f.number_field :stars, min: 0, max:5 %> 
+    </div>
+
+    <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
+
+    <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    </div> 
+
+    <%= f.hidden_field :photographer_id %>
+
+    <%= f.submit "Post Review" %>
+    <% end %>

@@ -17,9 +17,12 @@
     </div> 
     
     <p> Where is the the photographer located? </p>
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <div>
+    <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: "Select One" %>
+    </div>
 
     <p> Don't see them here? Feel free to add them below! </p> 
+    <div>
     <%= f.fields_for :location do |l| %>
         <%= l.label :city %>
         <%= l.text_field :city %>
@@ -30,6 +33,8 @@
         <%= l.label :zipcode %>
         <%= l.text_field :zipcode %>
         <% end %>
+    </div>
+    <br>
 
     <%= f.submit "Add Photographer" %>
     <% end %>

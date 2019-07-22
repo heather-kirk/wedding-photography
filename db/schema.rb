@@ -22,13 +22,15 @@ ActiveRecord::Schema.define(version: 2019_07_21_211205) do
   end
 
   create_table "photographers", force: :cascade do |t|
-    t.integer "location_id"
     t.string "name"
     t.string "style"
     t.integer "price"
+    t.integer "location_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_photographers_on_location_id"
+    t.index ["user_id"], name: "index_photographers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
